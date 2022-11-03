@@ -57,9 +57,18 @@
     --transition-alpha: .1s ease-in-out;
     /* card background */
     --card-background: rgba(32,34,58, 1);
+    /* display */
+    --card-side-displayed: flex;
+    --card-side-hidden: none;
+    --card-front-display: var(--card-side-displayed);
+    --card-back-display: var(--card-side-hidden);
 
     /* indicator */
     --indicator-size: .75em;
+
+    /* width */
+    --screen-padding: 24px;
+    --scroll-width: calc(100vw - var(--screen-padding));
 }
 
 /*------------------------------------*\
@@ -252,9 +261,17 @@ input::placeholder {
 
 .o-row {
     position: relative;
-    padding: 24px 24px 0;
+    padding: var(--screen-padding) var(--screen-padding) 0;
 }
 
+.o-row-pollen{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: scroll;
+    width: 100%;
+    padding-top: 48px;
+}
 
 
 .o-row--beta {
@@ -276,8 +293,9 @@ input::placeholder {
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
+        --screen-padding: 48px;
+        /* padding-left: 48px;
+        padding-right: 48px; */
     }
 }
 
@@ -512,6 +530,9 @@ input::placeholder {
 #COMPONENTS
 \*------------------------------------*/
 
+
+
+
 /*
     Component: Logo
     ---
@@ -550,7 +571,7 @@ input::placeholder {
 
 /* navbar top */
 .c-nav-bar {
-    width: 100vw;
+    width: 100%;
     height: 88px;
     background-color: var(--color-neutral-xxxx-dark);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
@@ -562,7 +583,8 @@ input::placeholder {
     padding: 0;
     text-align: start;
     line-height: 88px;
-
+    height: 100%;
+    width: fit-content;
 }
 
 /* c-icon */
@@ -575,9 +597,6 @@ input::placeholder {
 }
 
 
-
-
-
 /*
     Component: Card
     ---
@@ -587,23 +606,51 @@ input::placeholder {
 
 .c-card {
     color: white;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
+    margin: 16px;
     border-radius: var(--radius);
     background-color: var(--card-background);
-    box-shadow: 0 0 0 1px rgba(0,0,0,.075), 0 2px 4px rgba(0,0,0,.075);
-    overflow: hidden;
-    width: 350px;
-    height: 350px;
-    padding: 32px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.75);
+    min-height: 264px;
+    min-width: 264px;
+    padding: 16px;
+}
+
+
+
+.c-card-flipped {
+    transform: rotateY(180deg);
+    --card-front-display: var(--card-side-hidden);
+    --card-back-display: var(--card-side-display);
+    transition: transform .5s;
+}
+
+
+.c-card:hover {
+    transform: rotateY(-5deg) ;
+    transition: transform .7s;
+    box-shadow: -6px 0px 4px rgba(0,0,0,.75);
 }
 
 .c-card__body {
-    font-size: 1.45em;
-    display: flex;
+    font-size: 1em;
     flex-direction: column;
+    /* display: var(--card-front-display); */
     justify-content: center;
     justify-content: space-around;
     margin-bottom: 48px;
+}
+
+.c-card-flipped .c-card__body 
+{
+    transform: rotateY(180deg);
+    transition: transform .5s;
+}
+
+.c-card-flipped:hover{
+    transform: rotateY(175deg) !important;
+    transition: transform .7s;
+    box-shadow: 6px 0px 4px rgba(0,0,0,.75);
 }
 
 .c-card__footer {
@@ -613,7 +660,6 @@ input::placeholder {
 }
 
 .c-card-tophalf {
-    
     display: flex;
     justify-content: space-evenly ;
     margin-bottom: 16px;
@@ -634,6 +680,19 @@ input::placeholder {
     margin-top: 24px;
 }
 
+@media (min-width: 768px) {
+    .c-card {
+        min-height: 350px;
+        min-width: 350px;
+    }
+    .c-card__body {
+        font-size: 1.45em;
+    }
+    .c-validity {
+        font-size: .75em !important;
+    }
+}
+
 @media (min-width: 27em) {
 
     .c-card__title {
@@ -646,11 +705,9 @@ input::placeholder {
 }
 
 .c-validity{
-    font-size: .75em;
+    font-size: .65em;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-
 }
 
 .c-validity-indicator{
@@ -658,7 +715,7 @@ input::placeholder {
     height: var(--indicator-size);
     border-radius: 50%;
     margin-right: 8px;
-    background-color: white;
+    background-color: green;
     margin-left: 8px;
 }
 
@@ -700,30 +757,7 @@ input::placeholder {
     transition: border var(--transition-alpha);
 }
 
-.c-input:hover {
-    border-color: var(--color-neutral-xx-light);
-}
 
-.c-input:focus,
-.c-input:active {
-    border-color: var(--color-alpha-x-light);
-    box-shadow: var(--focus-shadow);
-}
-
-/*
-Input password with toggle checkbox on top of it needs
-more padding on the right to avoid overlap
-*/
-
-.c-input--password-with-toggle {
-    padding-right: 52px;
-}
-
-/* option input for checkboxes and radio buttons */
-
-.c-input-option {
-    margin-right: 8px;
-}
 
 /*
     Component: Label
@@ -748,7 +782,7 @@ more padding on the right to avoid overlap
     ---
     Class to put on form buttons or
 */
-
+/* 
 .c-button {
     font-size: 16px;
     font-weight: 700;
@@ -775,7 +809,7 @@ more padding on the right to avoid overlap
 .c-button:active {
     background-color: var(--color-alpha-dark);
     box-shadow: none;
-}
+} */
 
 /*
     Component: Option list
@@ -1037,45 +1071,28 @@ more padding on the right to avoid overlap
     Password toggle custom checkbox
 */
 
-.c-password-toggle-container {
-    position: relative;
-    display: block;
+.c-risk {
+    -webkit-appearance: none;
+    height: 1em;
+    background: linear-gradient(to right, #0f0 0%, #ff0 15%, #fa0 25%, #f00 40%, #d00 60%, #b00 100%);
+    outline: none;
+    opacity: 0.7;
+    width: 70%;
+    border-radius: 12.5px;
 }
 
-.c-password-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-}
 
-.c-password-toggle__label {
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    -ms-align-items: center;
-    align-items: center;
-    padding: 14px 16px;
-}
-
-.c-password-toggle__symbol {
-    display: block;
-    width: 20px;
-    height: 20px;
-    fill: var(--color-neutral-x-light);
-}
-
-.c-password-toggle__symbol--hide {
-    display: none;
-}
-
-.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--hide {
-    display: block;
-}
-
-.c-password-toggle__checkbox:checked + .c-password-toggle__label .c-password-toggle__symbol--show {
-    display: none;
-}
+.c-risk::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: .4em;
+    height: 1.5em;
+    background: var(--color-neutral-dark);
+    cursor: pointer;
+    border-radius: 100%;
+    margin-right: 4px;
+  }
+  
 
 /*------------------------------------*\
 #UTILITIES

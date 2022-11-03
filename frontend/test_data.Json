@@ -1,0 +1,9 @@
+{
+"count": {"grass_pollen": 0, "tree_pollen": 0, "weed_pollen":30},
+"risk": {"grass_pollen": "low", "tree_pollen": "low", "weed_pollen": "moderate"},	
+"species": {
+	"grass": {"poaceae": 0},
+	"tree": {"Alder": 0, "Birch": 0, "Cypress": 0, "Elm": 0, "Hazel": 0},
+	"Weed": {"Chenopod": 5, "Mugwort": 3, "Nettle": 0, "Ragweed": 20}
+	}
+}

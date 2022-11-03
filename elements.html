@@ -22,6 +22,7 @@
 </head>
 
 <body>
+	<!-- #region -->
 	<h2 class="c-card__title">
 		Event Registratie
 	</h2>
@@ -53,18 +54,15 @@
 		<label class="c-label" for="email">
 			Email address
 		</label>
-		<input class="c-input" type="email" name="email" id="email" placeholder="e.g. john@doe.com"
-			required>
+		<input class="c-input" type="email" name="email" id="email" placeholder="e.g. john@doe.com" required>
 	</p>
 
 	<!-- Custom checkbox -->
 	<p class="c-form-field c-form-field--option">
-		<input class="o-hide-accessible c-input-option c-custom-input-option-hidden" type="checkbox"
-			id="isFirstTimer">
+		<input class="o-hide-accessible c-input-option c-custom-input-option-hidden" type="checkbox" id="isFirstTimer">
 		<label class="c-label c-label--option c-custom-input-option-label" for="isFirstTimer">
 			<span class="c-custom-input-option c-custom-input-option--checkbox">
-				<svg class="c-custom-input-option__symbol" xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 9 6.75">
+				<svg class="c-custom-input-option__symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
 					<path
 						d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5"
 						transform="translate(-1.5 -2.75)" />
@@ -76,32 +74,55 @@
 	<p class="u-mb-md">
 		<input type="button" class="o-button-reset c-button js-save" value="Register" />
 	</p>
-</div>
-<div class="c-card__footer">
-	<p class="u-align-text-center u-text-sm u-color-neutral-dark">
-		Copyright 2018
-	</p>
-	<div class="o-container u-max-width-xs">
-		<div class="c-card">
-			<div class="c-card__body">
-				<div class="c-card-tophalf">
-					<div class="c-icon">
+	</div>
+	<div class="c-card__footer">
+		<p class="u-align-text-center u-text-sm u-color-neutral-dark">
+			Copyright 2018
+		</p>
+		<!-- make region card -->
+		<!-- #endregion -->
+		<!-- #region -->
+		<div class="o-container u-max-width-xs">
+			<div class="c-card c-card-flipped">
+				<div class="c-card__body">
+					<div class="c-card-tophalf">
+						<div class="c-icon">
+						</div>
+						<div class="c-form-field js-pollen_naam c-card-info">
+							<div class="c-info-element">soort: test</div>
+						</div>
 					</div>
-					<div class="c-form-field js-pollen_naam c-card-info">
-						<div class="c-info-element">soort: test</div>
+
+					<div class="c-form-field js-pollen-count c-card-info">
+						<div class="c-info-element">Count: test</div>
+					</div>
+					<div class="c-form-field js-pollen-count c-card-info">
+						<div class="c-info-element">Risico: Laag</div>
+					</div>
+
+				</div>
+				<div class="c-card__body">
+					<div class="c-form-field js-pollen-count c-card-info">
+						<div class="c-info-element">Pollen this time last year</div>
+					</div>
+					<div class="c-card-tophalf">
+						<div class="c-icon">
+						</div>
+						<div class="c-form-field js-pollen_naam c-card-info">
+							<div class="c-info-element">soort: test</div>
+						</div>
+					</div>
+
+					<div class="c-form-field js-pollen-count c-card-info">
+						<div class="c-info-element">Count: test</div>
+					</div>
+					<div class="c-form-field js-pollen-count c-card-info">
+						<div class="c-info-element">Risico: Laag</div>
 					</div>
 				</div>
-
-				<div class="c-form-field js-pollen-count c-card-info">
-					<div class="c-info-element">Count: test</div>
-				</div>
-				<div class="c-form-field js-pollen-count c-card-info">
-					<div class="c-info-element">Risico: Laag</div>
-				</div>
-
 			</div>
 		</div>
-	</div>
+		<!-- #endregion -->
 </body>
 
 </html>
