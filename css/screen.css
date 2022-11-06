@@ -531,13 +531,7 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
-.c-grid-container {
-  grid-auto-columns: 3rem;
-  grid-auto-rows: 1rem;
-  max-width: 100vw;
-  display: grid;
-  gap: 2rem;
-}
+
 
 .c-credits-title {
   grid-column-start: 1;
