@@ -589,8 +589,8 @@ input::placeholder {
 /* c-icon */
 
 .c-icon {
-  width: 6rem;
-  height: 6rem;
+  width: 9rem;
+  height: 9rem;
   /* background-color: rgba(255, 255, 255, .4); */
   fill: white;
 }
@@ -801,45 +801,17 @@ input::placeholder {
   padding-bottom: 0;
 }
 
-/*
-    Component: Button
-    ---
-    Class to put on form buttons or
-*/
-/* 
-.c-button {
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: var(--radius);
-    border: 1px solid var(--color-alpha-dark);
-    background-color: var(--color-alpha);
-    color: #fff;
-    padding: 11px 1rem;
-    line-height: 24px;
-    width: 100%;
-    outline: none;
-    transition: all var(--transition-alpha);
+.c-credits {
+  color: white;
+  display: grid;
+  
+  height: 4rem;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: var(--color-neutral-xxxx-dark);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
-
-.c-button:hover {
-    background-color: var(--color-alpha-light);
-}
-
-.c-button:focus {
-    background-color: var(--color-alpha);
-    box-shadow: var(--focus-shadow);
-}
-
-.c-button:active {
-    background-color: var(--color-alpha-dark);
-    box-shadow: none;
-} */
-
-/*
-    Component: Option list
-    ---
-
-*/
 
 .c-option-list {
   margin-bottom: 24px;
@@ -1128,7 +1100,7 @@ input::placeholder {
 
 .c-risk {
   -webkit-appearance: none;
-  height: 1rem;
+  height: 1.2rem;
   background: linear-gradient(
     to right,
     #0f0 0%,
@@ -1147,8 +1119,8 @@ input::placeholder {
 .c-risk::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 0.4rem;
-  height: 1.5rem;
+  width: 0.5rem;
+  height: 1.6rem;
   background: var(--color-neutral-dark);
   cursor: pointer;
   border-radius: 100%;
