@@ -313,7 +313,6 @@ input::placeholder {
 */
 
 .o-container {
-    max-width: 79.5em; /* 79.5 * 16px = 1272 */
     width: 100%;
 }
 
@@ -614,44 +613,62 @@ input::placeholder {
     min-height: 264px;
     min-width: 264px;
     padding: 16px;
+    animation: slideInCards .6s 1;
 }
 
+@keyframes slideInCards {
+    0% {
 
+      transform: translateX(-100vw) rotateY(180deg);
+    }
+    100% {
+      transform: translateX(0) rotateY(0deg);
+    }
+  }
+
+.c-card-front {
+    display: var(--card-front-display);
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.c-card-back {
+    display: var(--card-back-display);
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+}
 
 .c-card-flipped {
     transform: rotateY(180deg);
     --card-front-display: var(--card-side-hidden);
     --card-back-display: var(--card-side-display);
-    transition: transform .5s;
-}
-
-
-.c-card:hover {
-    transform: rotateY(-5deg) ;
     transition: transform .7s;
-    box-shadow: -6px 0px 4px rgba(0,0,0,.75);
 }
+.c-card-unflipped {
+    transform: rotateY(0deg);
+    --card-front-display: var(--card-side-display);
+    --card-back-display: var(--card-side-hidden);
+    transition: transform .7s;
+}
+
+
+
+
 
 .c-card__body {
     font-size: 1em;
-    flex-direction: column;
-    /* display: var(--card-front-display); */
-    justify-content: center;
-    justify-content: space-around;
     margin-bottom: 48px;
+    transform: rotateY(0deg);
 }
 
-.c-card-flipped .c-card__body 
-{
-    transform: rotateY(180deg);
-    transition: transform .5s;
+
+.c-card-unflipped .c-card__body{
+    transform: rotateY(0deg);
 }
 
-.c-card-flipped:hover{
-    transform: rotateY(175deg) !important;
-    transition: transform .7s;
-    box-shadow: 6px 0px 4px rgba(0,0,0,.75);
-}
+
 
 .c-card__footer {
     text-align: center;
@@ -690,6 +707,16 @@ input::placeholder {
     }
     .c-validity {
         font-size: .75em !important;
+    }
+    .c-card-flipped:hover{
+        transform: rotateY(175deg);
+        transition: transform .7s;
+        box-shadow: 6px 0px 4px rgba(0,0,0,.75);
+    }
+    .c-card-unflipped:hover {
+        transform: rotateY(-5deg) ;
+        transition: transform .7s;
+        box-shadow: -6px 0px 4px rgba(0,0,0,.75);
     }
 }
 

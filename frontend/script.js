@@ -18,6 +18,23 @@ let testJsonData =
   '{"weed": [{"Chenopod": 100}, {"Mugwort": 8}, {"Nettle": 23}, {"Ragweed": 44}]}],' +
   '"updatedAt": "2022-07-25T05:09:30.000Z"' +
   "}";
+
+let testJsonDataHistorical =
+  "{" +
+  '"Count": [' +
+  '{"tree_pollen": 0 },' +
+  '{"grass_pollen": 136},' +
+  '{"weed_pollen": 461}],' +
+  '"Risk": [' +
+  '{"grass_pollen": "High"},' +
+  '{"tree_pollen": "Low"},' +
+  '{"weed_pollen": "Very High"}],' +
+  '"Species": [' +
+  '{"grass": [{"Poaceae": 110}]},' +
+  '{"tree": [{"Alder": 100}, {"Birch": 102}, {"Cypress": 75}, {"Elm": 222}, {"Hazel": 22}]},' +
+  '{"weed": [{"Chenopod": 110}, {"Mugwort": 18}, {"Nettle": 43}, {"Ragweed": 43}]}],' +
+  '"updatedAt": "2022-07-25T05:09:30.000Z"' +
+  "}";
 // #endregion Event Variables
 
 const loadCard = function (
@@ -43,34 +60,65 @@ const loadCard = function (
       break;
   }
   let htmlRow = document.querySelector(`.js-row-${speciesName}`);
-  let htmlCard = `<div class="c-card">
+  let htmlCard = `<div class="c-card c-card-unflipped">
   <div class="c-card__body">
-    <div class="c-card-tophalf">
 
+    <div class="c-card-back">
+      <div class="c-info-element">Pollen this time last year</div>
+      <div class="c-card-tophalf">
       ${icon}
+        <div class="c-top-info">
+          <div class="c-form-field js-pollen_naam c-card-info c-validity">
+            <div class="c-info-element">data is recent </div>
+            <div class="c-validity-indicator"></div>
+          </div>
+          <div class="c-form-field js-pollen_naam c-card-info">
+            <div class="c-info-element">soort: ${subSpeciesName}</div>
+          </div>
+        </div>
+      </div>
 
-      <div class="c-top-info">
-        <div class="c-form-field js-pollen_naam c-card-info c-validity">
-          <div class="c-info-element">data is recent </div>
-          <div class="c-validity-indicator"></div>
-        </div>
-        <div class="c-form-field js-pollen_naam c-card-info">
-          <div class="c-info-element">soort: ${subSpeciesName}</div>
-        </div>
+      <div class="c-form-field js-pollen-count c-card-info">
+        <div class="c-info-element">Count: ${speciesCount} par/m^3</div>
+      </div>
+      <div class="c-form-field js-pollen-count c-card-info">
+        <div class="c-info-element">Risico:  ${risk}</div>
+      </div>
+      <div>
+        <input class="c-risk" type="range" disabled value="${barValue}">
       </div>
     </div>
 
-    <div class="c-form-field js-pollen-count c-card-info">
-      <div class="c-info-element">Count: ${speciesCount} par/m^3</div>
-    </div>
-    <div class="c-form-field js-pollen-count c-card-info">
-      <div class="c-info-element">Risico: ${risk}</div>
-    </div>
-    <div>
-      <input class="c-risk" type="range"  disabled value="${barValue}">
+    <div class="c-card-front">
+
+      <div class="c-card-tophalf">
+
+        ${icon}
+
+        <div class="c-top-info">
+          <div class="c-form-field js-pollen_naam c-card-info c-validity">
+            <div class="c-info-element">data is recent </div>
+            <div class="c-validity-indicator"></div>
+          </div>
+          <div class="c-form-field js-pollen_naam c-card-info">
+            <div class="c-info-element">soort: ${subSpeciesName}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-form-field js-pollen-count c-card-info">
+        <div class="c-info-element">Count: ${speciesCount} par/m^3</div>
+      </div>
+      <div class="c-form-field js-pollen-count c-card-info">
+        <div class="c-info-element">Risico: ${risk}</div>
+      </div>
+      <div>
+        <input class="c-risk" type="range" disabled value="${barValue}">
+      </div>
     </div>
   </div>
-    </div>`;
+
+</div>`;
   htmlRow.innerHTML += htmlCard;
 };
 
@@ -175,35 +223,11 @@ const changeCardDisplay = function () {
 };
 
 const CardClick = function (card) {
-  console.log("clicked");
   card.classList.toggle("c-card-flipped");
-  //show historical data
-  card.querySelector(".c-card__body").innerHTML = `
-  <div class="c-info-element">Pollen this time last year</div>
-    <div class="c-card-tophalf">
-      <div class="c-top-info">
-        <div class="c-form-field js-pollen_naam c-card-info c-validity">
-          <div class="c-info-element">data is recent </div>
-          <div class="c-validity-indicator"></div>
-        </div>
-        <div class="c-form-field js-pollen_naam c-card-info">
-          <div class="c-info-element">soort: </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="c-form-field js-pollen-count c-card-info">
-      <div class="c-info-element">Count:  par/m^3</div>
-    </div>
-    <div class="c-form-field js-pollen-count c-card-info">
-      <div class="c-info-element">Risico: </div>
-    </div>
-    <div>
-      <input class="c-risk" type="range"  disabled value="">
-    </div>`;
-  if (document.querySelector(".c-card-flipped") == null) {
-    LoadCards(testJsonData);
-    console.log("loading cards");
+  if (card.classList.contains("c-card-flipped")) {
+    card.classList.remove("c-card-unflipped");
+  } else {
+    card.classList.add("c-card-unflipped");
   }
 };
 
