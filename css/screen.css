@@ -64,7 +64,7 @@
     --card-back-display: var(--card-side-hidden);
 
     /* indicator */
-    --indicator-size: .75em;
+    --indicator-size: .75rem;
 
     /* width */
     --screen-padding: 24px;
@@ -576,7 +576,7 @@ input::placeholder {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
 .c-nav-title{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: white;
     margin: 0 16px;
     padding: 0;
@@ -654,21 +654,16 @@ input::placeholder {
 }
 
 
-
-
-
 .c-card__body {
-    font-size: 1em;
+    font-size: 1rem;
     margin-bottom: 48px;
     transform: rotateY(0deg);
 }
 
 
-.c-card-unflipped .c-card__body{
-    transform: rotateY(0deg);
+.c-card-flipped .c-card__body{
+    transform: rotateY(180deg);
 }
-
-
 
 .c-card__footer {
     text-align: center;
@@ -703,10 +698,10 @@ input::placeholder {
         min-width: 350px;
     }
     .c-card__body {
-        font-size: 1.45em;
+        font-size: 1.45rem;
     }
     .c-validity {
-        font-size: .75em !important;
+        font-size: .75rem !important;
     }
     .c-card-flipped:hover{
         transform: rotateY(175deg);
@@ -720,11 +715,15 @@ input::placeholder {
     }
 }
 
-@media (min-width: 27em) {
+@media (min-width: 27rem) {
 
     .c-card__title {
         margin-bottom: 32px;
     }
+}
+
+.c-info-element{
+    line-height: 1.5rem;
 }
 
 .c-top-info {
@@ -732,7 +731,7 @@ input::placeholder {
 }
 
 .c-validity{
-    font-size: .65em;
+    font-size: .65rem;
     display: flex;
     align-items: center;
 }
@@ -1100,7 +1099,7 @@ input::placeholder {
 
 .c-risk {
     -webkit-appearance: none;
-    height: 1em;
+    height: 1rem;
     background: linear-gradient(to right, #0f0 0%, #ff0 15%, #fa0 25%, #f00 40%, #d00 60%, #b00 100%);
     outline: none;
     opacity: 0.7;
@@ -1112,8 +1111,8 @@ input::placeholder {
 .c-risk::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: .4em;
-    height: 1.5em;
+    width: .4rem;
+    height: 1.5rem;
     background: var(--color-neutral-dark);
     cursor: pointer;
     border-radius: 100%;
@@ -1180,19 +1179,19 @@ input::placeholder {
 */
 
 .u-max-width-xs {
-    max-width: 27em !important;
+    max-width: 27rem !important;
 }
 
 .u-max-width-sm {
-    max-width: 39em !important;
+    max-width: 39rem !important;
 }
 
 .u-max-width-md {
-    max-width: 50em !important;
+    max-width: 50rem !important;
 }
 
 .u-max-width-lg {
-    max-width: 63.5em !important;
+    max-width: 63.5rem !important;
 }
 
 .u-max-width-none {
