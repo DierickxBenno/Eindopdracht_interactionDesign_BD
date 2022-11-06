@@ -531,7 +531,28 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
+.c-grid-container {
+  grid-auto-columns: 3rem;
+  grid-auto-rows: 1rem;
+  max-width: 100vw;
+  display: grid;
+  gap: 2rem;
+}
 
+.c-credits-title {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.c-credit-link {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  grid-column-end: 10;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
 /*
     Component: Logo
     ---
@@ -803,13 +824,11 @@ input::placeholder {
 
 .c-credits {
   color: white;
-  display: grid;
-  
-  height: 4rem;
+  background-color: var(--color-neutral-xxxx-dark);
+  height: fit-content;
   font-size: 1rem;
   padding: 1rem;
   margin-top: 2rem;
-  background-color: var(--color-neutral-xxxx-dark);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
 
