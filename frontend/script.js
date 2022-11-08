@@ -1,7 +1,15 @@
 "use strict";
 
 // #region Event Variables
-let htmlAddButton, htmlWave, htmlPercentage;
+let htmlAddButton,
+  htmlWave,
+  htmlPercentage,
+  historicalSpeciesName,
+  historicalSubSpeciesName,
+  historicalSpeciesCount,
+  historicalRisk,
+  historicalBarValue;
+
 let testJsonData =
   "{" +
   '"Count": [' +
@@ -37,12 +45,15 @@ let testJsonDataHistorical =
   "}";
 // #endregion Event Variables
 
-const loadCard = function (
+const LoadCard = function (
   speciesName,
   subSpeciesName,
   speciesCount,
   risk,
-  barValue
+  barValue,
+  subSpeciesCountHistorical,
+  riskHistorical,
+  barValueHistorical
 ) {
   let icon;
   switch (speciesName) {
@@ -64,7 +75,8 @@ const loadCard = function (
   <div class="c-card__body">
 
     <div class="c-card-back">
-      <div class="c-info-element">Pollen this time last year</div>
+      <div class="c-info-element c-year">
+      ${1969 + Math.floor(Date.now() / (3600 * 24 * 365 * 1000), -1)}</div>
       <div class="c-card-tophalf">
       ${icon}
         <div class="c-top-info">
@@ -79,18 +91,19 @@ const loadCard = function (
       </div>
 
       <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Count: ${speciesCount} par/m^3</div>
+        <div class="c-info-element">Count: ${subSpeciesCountHistorical} par/m^3</div>
       </div>
       <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Risico:  ${risk}</div>
+        <div class="c-info-element">Risico:  ${riskHistorical}</div>
       </div>
       <div>
-        <input class="c-risk" type="range" disabled value="${barValue}">
+        <input class="c-risk" type="range" disabled value="${barValueHistorical}">
       </div>
     </div>
 
     <div class="c-card-front">
-
+    <div class="c-info-element c-year">
+      ${1970 + Math.floor(Date.now() / (3600 * 24 * 365 * 1000), 0)}</div>
       <div class="c-card-tophalf">
 
         ${icon}
@@ -128,22 +141,32 @@ const LoadCards = function (jsonData) {
   document.querySelector(".js-row-weed").innerHTML = null;
   // wait half a second
   // delay(500);
-  let barValue;
+  let barValue, barValueHistorical, subSpeciesCountHistorical, riskHistorical;
+  //make json data
   const data = JSON.parse(jsonData);
+  const historicalData = JSON.parse(testJsonDataHistorical);
+  //define species
   let species = data.Species;
-  console.log(species);
+  let speciesHistorical = historicalData.Species;
+  //loop through species
   for (let item in species) {
     let speciesName = Object.keys(species[item])[0];
     for (let subSpecies in species[item][speciesName]) {
       let subSpeciesName = Object.keys(
         species[item][speciesName][subSpecies]
       )[0];
+      // get count of pollen
       let subSpeciesCount =
         species[item][speciesName][subSpecies][subSpeciesName];
+      let subSpeciesCountHistorical =
+        speciesHistorical[item][speciesName][subSpecies][subSpeciesName];
+      // get risk
       let risk = data["Risk"][speciesName + "_pollen"];
+      let riskHistorical = historicalData["Risk"][speciesName + "_pollen"];
       switch (speciesName.toLowerCase()) {
         case "grass":
           // #region calculate grass risk
+          //current risk
           if (subSpeciesCount < 29) {
             risk = "Low";
           } else if (subSpeciesCount < 60) {
@@ -154,11 +177,32 @@ const LoadCards = function (jsonData) {
             risk = "Very High";
           }
           barValue = (subSpeciesCount / 341) * 100;
+          //historical risk
+          if (subSpeciesCountHistorical < 29) {
+            riskHistorical = "Low";
+          } else if (subSpeciesCountHistorical < 60) {
+            riskHistorical = "Moderate";
+          } else if (subSpeciesCountHistorical < 341) {
+            riskHistorical = "High";
+          } else {
+            riskHistorical = "Very High";
+          }
+          barValueHistorical = (subSpeciesCountHistorical / 341) * 100;
           // #endregion
-          loadCard("grass", subSpeciesName, subSpeciesCount, risk, barValue);
+          LoadCard(
+            "grass",
+            subSpeciesName,
+            subSpeciesCount,
+            risk,
+            barValue,
+            subSpeciesCountHistorical,
+            riskHistorical,
+            barValueHistorical
+          );
           break;
         case "tree":
-          // #region calculate grass risk
+          // #region calculate tree risk
+          //current risk
           if (subSpeciesCount < 95) {
             risk = "Low";
           } else if (subSpeciesCount < 207) {
@@ -169,11 +213,31 @@ const LoadCards = function (jsonData) {
             risk = "Very High";
           }
           barValue = (subSpeciesCount / 703) * 100;
+          //historical risk
+          if (subSpeciesCountHistorical < 95) {
+            riskHistorical = "Low";
+          } else if (subSpeciesCountHistorical < 207) {
+            riskHistorical = "Moderate";
+          } else if (subSpeciesCountHistorical < 703) {
+            riskHistorical = "High";
+          } else {
+            riskHistorical = "Very High";
+          }
           // #endregion
-          loadCard("tree", subSpeciesName, subSpeciesCount, risk, barValue);
+          LoadCard(
+            "tree",
+            subSpeciesName,
+            subSpeciesCount,
+            risk,
+            barValue,
+            subSpeciesCountHistorical,
+            riskHistorical,
+            barValueHistorical
+          );
           break;
         case "weed":
-          // #region calculate grass risk
+          // #region calculate weed risk
+          //current risk
           if (subSpeciesCount < 20) {
             risk = "Low";
           } else if (subSpeciesCount < 77) {
@@ -184,8 +248,27 @@ const LoadCards = function (jsonData) {
             risk = "Very High";
           }
           barValue = (subSpeciesCount / 266) * 100;
+          //historical risk
+          if (subSpeciesCountHistorical < 20) {
+            riskHistorical = "Low";
+          } else if (subSpeciesCountHistorical < 77) {
+            riskHistorical = "Moderate";
+          } else if (subSpeciesCountHistorical < 266) {
+            riskHistorical = "High";
+          } else {
+            riskHistorical = "Very High";
+          }
           // #endregion
-          loadCard("weed", subSpeciesName, subSpeciesCount, risk, barValue);
+          LoadCard(
+            "weed",
+            subSpeciesName,
+            subSpeciesCount,
+            risk,
+            barValue,
+            subSpeciesCountHistorical,
+            riskHistorical,
+            barValueHistorical
+          );
           break;
       }
     }
@@ -219,7 +302,7 @@ const changeCardDisplay = function () {
       CardClick(card);
     });
   }
-  // loadcards when card is not flipped
+  // LoadCards when card is not flipped
 };
 
 const CardClick = function (card) {

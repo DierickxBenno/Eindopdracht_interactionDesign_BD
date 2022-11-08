@@ -531,7 +531,10 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
-
+.c-year{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
 
 .c-credits-title {
   grid-column-start: 1;
