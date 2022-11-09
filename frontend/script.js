@@ -79,11 +79,11 @@ const LoadCard = function (
       ${1969 + Math.floor(Date.now() / (3600 * 24 * 365 * 1000), -1)}</div>
       <div class="c-card-tophalf">
       ${icon}
-        <div class="c-top-info">
-          <div class="c-form-field js-pollen_naam c-card-info c-validity">
-            <div class="c-info-element">data is recent </div>
+      <div class="c-top-info">
+      <div class="c-info-element">data is recent </div>
             <div class="c-validity-indicator"></div>
           </div>
+      <div class="c-form-field js-pollen_naam c-card-info c-validity">
           <div class="c-form-field js-pollen_naam c-card-info">
             <div class="c-info-element">soort: ${subSpeciesName}</div>
           </div>
@@ -91,7 +91,7 @@ const LoadCard = function (
       </div>
 
       <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Count: ${subSpeciesCountHistorical} par/m^3</div>
+        <div class="c-info-element">Count: ${subSpeciesCountHistorical} par/m<sup>3</sup></div>
       </div>
       <div class="c-form-field js-pollen-count c-card-info">
         <div class="c-info-element">Risico:  ${riskHistorical}</div>
@@ -120,7 +120,7 @@ const LoadCard = function (
       </div>
 
       <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Count: ${speciesCount} par/m^3</div>
+        <div class="c-info-element">Count: ${speciesCount} par/m<sup>3</sup></div>
       </div>
       <div class="c-form-field js-pollen-count c-card-info">
         <div class="c-info-element">Risico: ${risk}</div>

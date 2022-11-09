@@ -2,12 +2,12 @@
 #FONTS
 \*------------------------------------*/
 
-/* @font-face {
-    font-family: "Inter UI Web";
-    font-weight: 400;
-    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2")
+@font-face {
+  font-family: "Nunito";
+  font-weight: 400;
+  src: url("../fonts/static/Nunito-Regular.ttf") format("woff2");
 }
-
+/*
 @font-face {
     font-family: "Inter UI Web";
     font-weight: 600;
@@ -84,7 +84,8 @@
 html {
   font-size: 1rem;
   line-height: 1.5;
-  font-family: "Inter UI Web", Helvetica, arial, sans-serif;
+  font-family: "Nunito", Helvetica, arial, sans-serif;
+  letter-spacing: 0.05rem;
   color: var(--color-neutral-xxxx-dark);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -531,7 +532,7 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
-.c-year{
+.c-year {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -608,6 +609,7 @@ input::placeholder {
 
 .c-icon {
   grid-column-start: 1;
+  font-size: 10rem;
   grid-row-start: 1;
   width: 3rem;
   height: 3rem;
@@ -690,7 +692,7 @@ input::placeholder {
 
 .c-card-tophalf {
   display: grid;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .c-card-info {
@@ -731,7 +733,7 @@ input::placeholder {
     box-shadow: -6px 0px 4px rgba(0, 0, 0, 0.75);
   }
   .c-card-tophalf {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 }
 
