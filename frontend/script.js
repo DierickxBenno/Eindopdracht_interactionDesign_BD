@@ -71,7 +71,7 @@ const LoadCard = function (
       break;
   }
   let htmlRow = document.querySelector(`.js-row-${speciesName}`);
-  let htmlCard = `<div class="c-card c-card-unflipped">
+  let htmlCard = `<div tabindex="0" class="c-card c-card-unflipped">
   <div class="c-card__body">
 
     <div class="c-card-back">
@@ -80,10 +80,10 @@ const LoadCard = function (
       <div class="c-card-tophalf">
       ${icon}
       <div class="c-top-info">
+      <div class="c-form-field js-pollen_naam c-card-info c-validity">
       <div class="c-info-element">data is recent </div>
             <div class="c-validity-indicator"></div>
           </div>
-      <div class="c-form-field js-pollen_naam c-card-info c-validity">
           <div class="c-form-field js-pollen_naam c-card-info">
             <div class="c-info-element">soort: ${subSpeciesName}</div>
           </div>
