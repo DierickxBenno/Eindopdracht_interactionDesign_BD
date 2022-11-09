@@ -489,8 +489,6 @@ input::placeholder {
     Small button reset object
 */
 
-
-
 /*
     Object: Hide accessible
     ---
@@ -520,7 +518,7 @@ input::placeholder {
   text-align: center;
   font-weight: 700;
   opacity: 0.75;
-  border-bottom: .125rem solid white;
+  border-bottom: 0.125rem solid white;
 }
 
 .c-credits-title {
@@ -777,9 +775,21 @@ input::placeholder {
   width: var(--indicator-size);
   height: var(--indicator-size);
   border-radius: 50%;
-  margin-right: 8px;
-  background-color: green;
-  margin-left: 8px;
+  background-color: red;
+  margin: 0 auto;
+  animation: colorChange 10s 1; /* 10 seconds is just as test, mainly as fetaure to show how long last refresh was, prob will always be recent */
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: green;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: red;
+  }
 }
 
 @media (min-width: 768px) {
