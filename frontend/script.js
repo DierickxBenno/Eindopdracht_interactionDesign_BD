@@ -45,6 +45,17 @@ let testJsonDataHistorical =
   "}";
 // #endregion Event Variables
 
+const ListenToEnterKey = function () {
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // click focused item
+      document.activeElement.click();
+      // console.log("Enter key pressed");
+    }
+  });
+};
+
 const LoadCard = function (
   speciesName,
   subSpeciesName,
@@ -317,7 +328,7 @@ const CardClick = function (card) {
 const NavTitleListener = function () {
   let navTitle = document.querySelector(".c-nav-title");
   navTitle.addEventListener("click", function () {
-    ReloadPage();
+    location.reload();
   });
 };
 
@@ -332,4 +343,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // fetchFromAPI(url);
   LoadCards(testJsonData);
   NavTitleListener();
+  ListenToEnterKey();
 });
