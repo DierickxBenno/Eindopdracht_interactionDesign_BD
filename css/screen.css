@@ -535,11 +535,13 @@ input::placeholder {
 .c-year {
   width: fit-content;
   font-size: 1.5rem;
+  width: 80%;
   margin: 0 auto;
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 700;
   opacity: 0.75;
+  border-bottom: .125rem solid white;
 }
 
 .c-credits-title {
