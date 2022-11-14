@@ -271,7 +271,19 @@ input::placeholder {
   align-items: center;
   overflow-x: scroll;
   width: 100%;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
+}
+/* scrollbar design */
+.o-row-pollen::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: none;
+}
+
+/* Handle */
+.o-row-pollen::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 0.25rem;
 }
 
 .o-row--beta {
@@ -626,7 +638,7 @@ input::placeholder {
   color: white;
   display: block;
   /* margin-bottom: 24px; */
-  margin: 1rem;
+  margin: .5rem;
   border-radius: var(--radius);
   background-color: var(--card-background);
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.75);
@@ -715,6 +727,7 @@ input::placeholder {
     width: 20rem;
     height: 20rem;
     padding: 1.5rem;
+    margin: .5rem 1rem;
   }
 
   .c-card__body {
@@ -778,6 +791,7 @@ input::placeholder {
   background-color: red;
   margin: 0 auto;
   animation: colorChange 10s 1; /* 10 seconds is just as test, mainly as fetaure to show how long last refresh was, prob will always be recent */
+
 }
 
 @keyframes colorChange {
