@@ -47,12 +47,12 @@ let testJsonDataHistorical =
 
 const ListenToEnterKey = function () {
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
+    //enter or space key tapped de acitve element click
+    if (event.key == "Enter" || event.key == " ") {
       event.preventDefault();
-      // click focused item
       document.activeElement.click();
-      // console.log("Enter key pressed");
     }
+
   });
 };
 
@@ -84,48 +84,19 @@ const LoadCard = function (
   let htmlRow = document.querySelector(`.js-row-${speciesName}`);
   let htmlCard = `<div tabindex="0" class="c-card c-card-unflipped">
   <div class="c-card__body">
-
-    <div class="c-card-back">
-      <div class="c-info-element c-year">
-      ${1969 + Math.floor(Date.now() / (3600 * 24 * 365 * 1000), -1)}</div>
-      <div class="c-card-tophalf">
-      ${icon}
-      <div class="c-top-info">
-      <div class="c-form-field js-pollen_naam c-card-info c-validity">
-      <div class="c-info-element">data reliability </div>
-            <div class="c-validity-indicator"></div>
-          </div>
-          <div class="c-form-field js-pollen_naam c-card-info">
-            <div class="c-info-element">soort: ${subSpeciesName}</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Count: ${subSpeciesCountHistorical} par/m<sup>3</sup></div>
-      </div>
-      <div class="c-form-field js-pollen-count c-card-info">
-        <div class="c-info-element">Risico:  ${riskHistorical}</div>
-      </div>
-      <div>
-        <input class="c-risk" type="range" disabled value="${barValueHistorical}">
-      </div>
-    </div>
-
     <div class="c-card-front">
-    <div class="c-info-element c-year">
-      ${1970 + Math.floor(Date.now() / (3600 * 24 * 365 * 1000), 0)}</div>
-      <div class="c-card-tophalf">
+    <div class="c-info-element c-name">
+    ${subSpeciesName}
+    </div>
+    
+    <div class="c-card-tophalf">
 
         ${icon}
 
         <div class="c-top-info">
-          <div class="c-form-field js-pollen_naam c-card-info c-validity">
+          <div class="c-form-field js-pollen_naam  c-validity">
             <div class="c-info-element">data reliability </div>
             <div class="c-validity-indicator"></div>
-          </div>
-          <div class="c-form-field js-pollen_naam c-card-info">
-            <div class="c-info-element">soort: ${subSpeciesName}</div>
           </div>
         </div>
       </div>
@@ -332,6 +303,13 @@ const NavTitleListener = function () {
   });
 };
 
+const RefreshListener = function () {
+  let navTitle = document.querySelector(".c-refresh");
+  navTitle.addEventListener("click", function () {
+    location.reload();
+  });
+};
+
 const ReloadPage = function () {
   LoadCards(testJsonData);
 };
@@ -344,4 +322,5 @@ document.addEventListener("DOMContentLoaded", function () {
   LoadCards(testJsonData);
   NavTitleListener();
   ListenToEnterKey();
+  RefreshListener();
 });

@@ -521,7 +521,7 @@ input::placeholder {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
-.c-year {
+.c-name {
   width: fit-content;
   font-size: 1.5rem;
   width: 80%;
@@ -531,6 +531,12 @@ input::placeholder {
   font-weight: 700;
   opacity: 0.75;
   border-bottom: 0.125rem solid white;
+}
+
+.c-name-row {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: white;
 }
 
 .c-credits-title {
@@ -579,6 +585,28 @@ input::placeholder {
 
 /* Light logo alternative */
 
+/* c-refresh */
+.c-refresh {
+  grid-column-start: -3;
+}
+
+.c-refresh-button {
+  margin: 0.5rem 0;
+  animation: refresh-spin 0.7s ease-in-out;
+
+}
+
+@keyframes refresh-spin {
+  0% {
+    transform: rotateZ(0deg);
+    transition: transform 0.7s;
+  }
+  100% {
+    transform: rotateZ(-360deg);
+    transition: transform 0.7s;
+  }
+}
+
 .c-logo--light .c-logo__path {
   fill: white;
 }
@@ -589,7 +617,10 @@ input::placeholder {
   height: 5rem;
   background-color: var(--color-neutral-xxxx-dark);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 4rem 1rem;
 }
+
 .c-nav-title {
   font-size: 1.5rem;
   color: white;
@@ -619,13 +650,28 @@ input::placeholder {
 .c-icon {
   grid-column-start: 1;
   font-size: 10rem;
-  grid-row-start: 1;
+  grid-row-start: 2;
   width: 3rem;
   height: 3rem;
   margin-right: 1rem;
   /* background-color: rgba(255, 255, 255, .4); */
   fill: white;
   margin: auto;
+}
+
+.st0 {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-miterlimit: 10;
+  animation: refresh-color-st0 0.6s 1;
+}
+
+.st1 {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-miterlimit: 10;
 }
 
 /*
@@ -638,7 +684,7 @@ input::placeholder {
   color: white;
   display: block;
   /* margin-bottom: 24px; */
-  margin: .5rem;
+  margin: 0.5rem;
   border-radius: var(--radius);
   background-color: var(--card-background);
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.75);
@@ -671,28 +717,28 @@ input::placeholder {
   justify-content: space-around;
 }
 
-.c-card-flipped {
+/* .c-card-flipped {
   transform: rotateY(180deg);
   --card-front-display: var(--card-side-hidden);
   --card-back-display: var(--card-side-display);
   transition: transform 0.7s;
+
 }
 .c-card-unflipped {
   transform: rotateY(0deg);
   --card-front-display: var(--card-side-display);
   --card-back-display: var(--card-side-hidden);
   transition: transform 0.7s;
-}
-
+} */
 .c-card__body {
   font-size: 1rem;
   margin-bottom: 3rem;
   transform: rotateY(0deg);
 }
 
-.c-card-flipped .c-card__body {
+/* .c-card-flipped .c-card__body {
   transform: rotateY(180deg);
-}
+} */
 
 .c-card__footer {
   text-align: center;
@@ -703,6 +749,7 @@ input::placeholder {
 .c-card-tophalf {
   display: grid;
   margin-bottom: 0rem;
+  grid-template-rows: 16px 48px 16px;
 }
 
 .c-card-info {
@@ -727,19 +774,17 @@ input::placeholder {
     width: 20rem;
     height: 20rem;
     padding: 1.5rem;
-    margin: .5rem 1rem;
+    margin: 0.5rem 1rem;
   }
 
   .c-card__body {
     font-size: 1.45rem;
   }
 
-  .c-card-flipped:hover {
-    transform: rotateY(175deg);
-    transition: transform 0.7s;
-    box-shadow: 6px 0px 4px rgba(0, 0, 0, 0.75);
+  .c-card:hover {
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
   }
-  /* .c-card-flipped do same as hover when tabbed to */
+  /* .c-card-flipped do same as hover when tabbed to
   .c-card-flipped:focus {
     transform: rotateY(175deg);
     transition: transform 0.7s;
@@ -756,7 +801,7 @@ input::placeholder {
     transition: transform 0.7s;
     box-shadow: -6px 0px 4px rgba(0, 0, 0, 0.75);
   }
-
+*/
   .c-card-tophalf {
     margin-bottom: 1.5rem;
   }
@@ -772,16 +817,24 @@ input::placeholder {
   line-height: 1.5rem;
 }
 
+.c-card-tophalf .c-info-element {
+  font-size: 1rem;
+}
+
 .c-top-info {
   margin-left: 1rem;
   grid-column-start: 2;
-  grid-row-start: 1;
+  grid-row-start: 2;
+  display: flex;
+  align-items: center;
 }
 
 .c-validity {
   font-size: 0.75rem;
   display: flex;
   align-items: center;
+  grid-column-start: 1;
+  grid-row-start: 2;
 }
 
 .c-validity-indicator {
@@ -791,7 +844,7 @@ input::placeholder {
   background-color: red;
   margin: 0 auto;
   animation: colorChange 10s 1; /* 10 seconds is just as test, mainly as fetaure to show how long last refresh was, prob will always be recent */
-
+  margin-left: 8px;
 }
 
 @keyframes colorChange {
