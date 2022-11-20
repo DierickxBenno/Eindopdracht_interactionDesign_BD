@@ -588,12 +588,16 @@ input::placeholder {
 /* c-refresh */
 .c-refresh {
   grid-column-start: -3;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  margin: auto;
 }
 
 .c-refresh-button {
+  fill: white;
   margin: 0.5rem 0;
   animation: refresh-spin 0.7s ease-in-out;
-
 }
 
 @keyframes refresh-spin {
@@ -602,7 +606,7 @@ input::placeholder {
     transition: transform 0.7s;
   }
   100% {
-    transform: rotateZ(-360deg);
+    transform: rotateZ(360deg);
     transition: transform 0.7s;
   }
 }
@@ -619,6 +623,9 @@ input::placeholder {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 4rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .c-nav-title {
