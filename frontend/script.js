@@ -263,7 +263,6 @@ const LoadCards = function (jsonData) {
       }
     }
   }
-  changeCardDisplay();
 };
 
 const fetchFromAPI = function (url) {
@@ -283,17 +282,17 @@ const fetchFromAPI = function (url) {
     });
 };
 
-const changeCardDisplay = function () {
-  let cards = document.querySelectorAll(".c-card");
-  console.log(cards.length);
-  // add event listener click to each card
-  for (let card of cards) {
-    card.addEventListener("click", function () {
-      CardClick(card);
-    });
-  }
-  // LoadCards when card is not flipped
-};
+// const changeCardDisplay = function () {
+//   let cards = document.querySelectorAll(".c-card");
+//   console.log(cards.length);
+//   // add event listener click to each card
+//   for (let card of cards) {
+//     card.addEventListener("click", function () {
+//       CardClick(card);
+//     });
+//   }
+//   // LoadCards when card is not flipped
+// };
 
 const CardClick = function (card) {
   card.classList.toggle("c-card-flipped");
@@ -307,6 +306,7 @@ const CardClick = function (card) {
 const NavTitleListener = function () {
   let navTitle = document.querySelector(".c-nav-title");
   navTitle.addEventListener("click", function () {
+    //reload page
     location.reload();
   });
 };
@@ -316,10 +316,6 @@ const RefreshListener = function () {
   navTitle.addEventListener("click", function () {
     location.reload();
   });
-};
-
-const ReloadPage = function () {
-  LoadCards(testJsonData);
 };
 
 document.addEventListener("DOMContentLoaded", function () {

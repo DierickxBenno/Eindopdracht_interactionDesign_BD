@@ -483,7 +483,7 @@ a:focus {
   margin-bottom: 1rem;
   text-align: center;
   font-weight: 700;
-  opacity: 0.75;
+  opacity: 0.85;
   border-bottom: 0.125rem solid white;
 }
 
@@ -742,7 +742,6 @@ a:focus {
     font-size: 1.45rem;
   }
 
-
   .c-card-tophalf {
     margin-bottom: 1.5rem;
   }
@@ -893,8 +892,9 @@ a:focus {
 /* slider */
 
 .c-slider-track {
-  height: 1.195rem;
-  width: 70%;
+  /* margin: 0 auto; */
+  height: 1.2rem;
+  width: 80%;
   border-radius: 0.6rem;
   background: linear-gradient(
     to right,
@@ -912,13 +912,12 @@ a:focus {
   height: 1.2rem;
   /* width: 10%; */
   margin-left: auto;
-  margin-right: -0.1rem;
   border-radius: 0.6rem;
   background-image: radial-gradient(
     circle at 0.5rem 0.6rem,
     rgba(0, 0, 0, 0) 0,
     rgba(0, 0, 0, 0) 0.6rem,
-    black 0.6rem
+    #454555 0.6rem
   );
 }
 
@@ -975,8 +974,6 @@ a:focus {
 }
 
 /* hover state */
-
-
 
 /* focused and active state */
 
@@ -1190,35 +1187,6 @@ a:focus {
     ---
     Password toggle custom checkbox
 */
-
-.c-risk {
-  -webkit-appearance: none;
-  height: 1.2rem;
-  background: linear-gradient(
-    to right,
-    #0f0 0%,
-    #ff0 15%,
-    #fa0 25%,
-    #f00 40%,
-    #d00 60%,
-    #b00 100%
-  );
-  outline: none;
-  opacity: 0.7;
-  width: 70%;
-  border-radius: 12.5px;
-}
-
-.c-risk::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0.5rem;
-  height: 1.6rem;
-  background: var(--color-neutral-dark);
-  cursor: pointer;
-  border-radius: 100%;
-  margin-right: 4px;
-}
 
 /*------------------------------------*\
 #UTILITIES
