@@ -36,11 +36,9 @@
   --color-neutral-xxx-light: #e2e3e7;
   --color-neutral-xx-light: #caccd4;
   --color-neutral-x-light: #b5b6c0;
-  --color-neutral-light: #a0a1ad;
   --color-neutral: #8b8c9a;
   --color-neutral-dark: #757787;
   --color-neutral-x-dark: #606274;
-  --color-neutral-xx-dark: #4b4c60;
   --color-neutral-xxx-dark: #35374d;
   --color-neutral-xxxx-dark: #20223a;
 
@@ -67,8 +65,10 @@
   --indicator-size: 0.55rem;
 
   /* width */
-  --screen-padding: 24px;
+  --screen-padding: 1.5rem;
   --scroll-width: calc(100vw - var(--screen-padding));
+
+  --global-fontsize: 1rem;
 }
 
 /*------------------------------------*\
@@ -82,7 +82,7 @@
 */
 
 html {
-  font-size: 1rem;
+  font-size: var(--global-fontsize);
   line-height: 1.5;
   font-family: "Nunito", Helvetica, arial, sans-serif;
   letter-spacing: 0.05rem;
@@ -91,7 +91,12 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-neutral-xxx-dark);
-  /* background-color: #1D2D40; */
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 9rem;
 }
 
 *,
@@ -99,13 +104,6 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
-/*
-* Remove text-shadow in selection highlight:
-* https://twitter.com/miketaylr/status/12228805301
-*
-* Customize the background color to match your design.
-*/
 
 ::-moz-selection {
   background: var(--color-alpha);
@@ -147,21 +145,21 @@ h3 {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: calc(36rem / var(--global-font-size));
   line-height: 3rem;
-  margin: 0 0 24px;
+  margin: 0 0 calc(24rem / var(--global-font-size));
 }
 
 h2 {
-  font-size: 32px;
-  line-height: 40px;
-  margin: 0 0 24px;
+  font-size: calc(32rem / var(--global-font-size));
+  line-height: calc(40rem / var(--global-font-size));
+  margin: 0 0 calc(24rem / var(--global-font-size));
 }
 
 h3 {
-  font-size: 26px;
-  line-height: 32px;
-  margin: 0 0 24px;
+  font-size: calc(26rem / var(--global-font-size));
+  line-height: calc(32rem / var(--global-font-size));
+  margin: 0 0 calc(24rem / var(--global-font-size));
 }
 
 h4,
@@ -169,8 +167,8 @@ h5,
 h6 {
   font-size: 1rem;
   font-weight: 600;
-  line-height: 24px;
-  margin: 0 0 24px;
+  line-height: calc(24rem / var(--global-font-size));
+  margin: 0 0 calc(24rem / var(--global-font-size));
 }
 
 p,
@@ -180,43 +178,17 @@ dl,
 table,
 address,
 figure {
-  margin: 0 0 24px;
+  margin: 0 0 calc(24rem / var(--global-font-size));
 }
 
 ul,
 ol {
-  padding-left: 24px;
+  padding-left: calc(24rem / var(--global-font-size));
 }
 
 li ul,
 li ol {
   margin-bottom: 0;
-}
-
-blockquote {
-  font-style: normal;
-  font-size: 23px;
-  line-height: 32px;
-  margin: 0 0 24px;
-}
-
-blockquote * {
-  font-size: inherit;
-  line-height: inherit;
-}
-
-figcaption {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1rem;
-  margin-top: 8px;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: LightGrey;
-  margin: 0 0 24px;
 }
 
 a {
@@ -237,19 +209,6 @@ a:focus {
   color: var(--color-alpha-light);
 }
 
-label,
-input {
-  display: block;
-}
-
-select {
-  width: 100%;
-}
-
-input::placeholder {
-  color: var(--color-neutral-x-light);
-}
-
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
@@ -259,11 +218,6 @@ input::placeholder {
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
 */
-
-.o-row {
-  position: relative;
-  padding: var(--screen-padding) var(--screen-padding) 0;
-}
 
 .o-row-pollen {
   display: flex;
@@ -788,27 +742,7 @@ input::placeholder {
     font-size: 1.45rem;
   }
 
-  .c-card:hover {
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
-  }
-  /* .c-card-flipped do same as hover when tabbed to
-  .c-card-flipped:focus {
-    transform: rotateY(175deg);
-    transition: transform 0.7s;
-    box-shadow: 6px 0px 4px rgba(0, 0, 0, 0.75);
-  }
 
-  .c-card-unflipped:hover {
-    transform: rotateY(-5deg);
-    transition: transform 0.7s;
-    box-shadow: -6px 0px 4px rgba(0, 0, 0, 0.75);
-  }
-  .c-card-unflipped:focus {
-    transform: rotateY(-5deg);
-    transition: transform 0.7s;
-    box-shadow: -6px 0px 4px rgba(0, 0, 0, 0.75);
-  }
-*/
   .c-card-tophalf {
     margin-bottom: 1.5rem;
   }
@@ -939,6 +873,8 @@ input::placeholder {
   padding: 1rem;
   margin-top: 2rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  position: absolute;
+  inset: auto 0 0 0;
 }
 
 .c-option-list {
@@ -954,6 +890,37 @@ input::placeholder {
     ---
     Custom checkboxes & radio buttons
 */
+/* slider */
+
+.c-slider-track {
+  height: 1.195rem;
+  width: 70%;
+  border-radius: 0.6rem;
+  background: linear-gradient(
+    to right,
+    #0f0 0%,
+    #ff0 15%,
+    #fa0 25%,
+    #f00 40%,
+    #d00 60%,
+    #b00 100%
+  );
+  /* margin: 2rem; */
+}
+
+.c-slider-counter-bar {
+  height: 1.2rem;
+  /* width: 10%; */
+  margin-left: auto;
+  margin-right: -0.1rem;
+  border-radius: 0.6rem;
+  background-image: radial-gradient(
+    circle at 0.5rem 0.6rem,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 0.6rem,
+    black 0.6rem
+  );
+}
 
 /* Hide the actual input with the class .o-hide-accessible */
 
@@ -1009,9 +976,7 @@ input::placeholder {
 
 /* hover state */
 
-.c-custom-input-option-label:hover .c-custom-input-option {
-  border-color: var(--color-neutral-xx-light);
-}
+
 
 /* focused and active state */
 

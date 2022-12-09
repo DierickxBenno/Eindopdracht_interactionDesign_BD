@@ -1,0 +1,33 @@
+@use postcss-preset-env;
+
+.c-the-one-div{
+  font-family: 'Verdana', sans-serif;
+  display: flex; 
+  height: 100vh;
+  width: 100vw;
+& .c-divke{
+    margin: auto 2rem;
+    width: 15rem;
+    height: 15rem;
+    background-color: rgba(125,0,255,1);
+    border-radius: 5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .c-nested {
+      font-size: 2rem;
+      color: white;
+      font-weight: 900;
+    }
+  @nest .c-nested-2 &{
+      font-size: 2rem;
+      color: white;
+      font-weight: 900;
+    }
+  } 
+}
+.c-divke .c-paragraph{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 450;
+}

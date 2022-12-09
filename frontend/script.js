@@ -52,7 +52,6 @@ const ListenToEnterKey = function () {
       event.preventDefault();
       document.activeElement.click();
     }
-
   });
 };
 
@@ -82,6 +81,7 @@ const LoadCard = function (
       break;
   }
   let htmlRow = document.querySelector(`.js-row-${speciesName}`);
+
   let htmlCard = `<div tabindex="0" class="c-card c-card-unflipped">
   <div class="c-card__body">
     <div class="c-card-front">
@@ -108,13 +108,20 @@ const LoadCard = function (
         <div class="c-info-element">Risico: ${risk}</div>
       </div>
       <div>
-        <input class="c-risk" type="range" disabled value="${barValue}">
+      <!-- <input class="c-risk" type="range" disabled value="${barValue}"> -->
+      <div class="c-slider-track c-slider-part js-${subSpeciesName}-slider">
+			  <div class="c-slider-counter-bar">
+      </div>
+		</div>
       </div>
     </div>
   </div>
 
 </div>`;
   htmlRow.innerHTML += htmlCard;
+  let thisSlider = document.querySelector(`.js-${subSpeciesName}-slider`);
+  let counterSlider = thisSlider.querySelector(".c-slider-counter-bar");
+  counterSlider.style.width = `${100.0 - barValue}%`;
 };
 
 const LoadCards = function (jsonData) {
@@ -216,6 +223,7 @@ const LoadCards = function (jsonData) {
             riskHistorical,
             barValueHistorical
           );
+
           break;
         case "weed":
           // #region calculate weed risk
