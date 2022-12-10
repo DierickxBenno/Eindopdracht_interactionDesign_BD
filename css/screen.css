@@ -7,18 +7,6 @@
   font-weight: 400;
   src: url("../fonts/static/Nunito-Regular.ttf") format("woff2");
 }
-/*
-@font-face {
-    font-family: "Inter UI Web";
-    font-weight: 600;
-    src: url("../fonts/Inter-UI-Medium.woff2") format("woff2")
-}
-
-@font-face {
-    font-family: "Inter UI Web";
-    font-weight: 700;
-    src: url("../fonts/Inter-UI-Bold.woff2") format("woff2")
-} */
 
 /*------------------------------------*\
 #Variables
@@ -49,26 +37,18 @@
   --focus-shadow: 0 0 0 3px var(--focus-shadow-color);
 
   /* border radius */
-  --radius: 8px;
+  --radius: 2rem;
 
   /* transitions */
   --transition-alpha: 0.1s ease-in-out;
   /* card background */
   --card-background: rgba(32, 34, 58, 1);
-  /* display */
-  --card-side-displayed: flex;
-  --card-side-hidden: none;
-  --card-front-display: var(--card-side-displayed);
-  --card-back-display: var(--card-side-hidden);
-
-  /* indicator */
-  --indicator-size: 0.55rem;
-
   /* width */
   --screen-padding: 1.5rem;
   --scroll-width: calc(100vw - var(--screen-padding));
 
   --global-fontsize: 1rem;
+  --indicator-size: 0.5rem;
 }
 
 /*------------------------------------*\
@@ -122,91 +102,30 @@ body {
 \*------------------------------------*/
 
 /*
-Elements: Images
----
-Default markup for images to make them responsive
-*/
-
-img {
-  max-width: 100%;
-  vertical-align: top;
-}
-
-/*
     Elements: typography
     ---
     Default markup for typographic elements
 */
-
-h1,
-h2,
-h3 {
-  font-weight: 700;
-}
-
-h1 {
-  font-size: calc(36rem / var(--global-font-size));
-  line-height: 3rem;
-  margin: 0 0 calc(24rem / var(--global-font-size));
-}
-
-h2 {
-  font-size: calc(32rem / var(--global-font-size));
-  line-height: calc(40rem / var(--global-font-size));
-  margin: 0 0 calc(24rem / var(--global-font-size));
-}
-
-h3 {
-  font-size: calc(26rem / var(--global-font-size));
-  line-height: calc(32rem / var(--global-font-size));
-  margin: 0 0 calc(24rem / var(--global-font-size));
-}
-
-h4,
-h5,
-h6 {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: calc(24rem / var(--global-font-size));
-  margin: 0 0 calc(24rem / var(--global-font-size));
-}
-
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
-  margin: 0 0 calc(24rem / var(--global-font-size));
-}
-
-ul,
-ol {
-  padding-left: calc(24rem / var(--global-font-size));
-}
-
-li ul,
-li ol {
-  margin-bottom: 0;
-}
 
 a {
   transition: all var(--transition-alpha);
   color: var(--color-alpha);
   outline-color: var(--color-alpha);
   outline-width: medium;
-  outline-offset: 2px;
+  outline-offset: .15rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: #fff .0625rem solid;
 }
 
 a:visited,
 a:active {
-  color: var(--color-alpha);
+  font-weight: 600;
 }
 
 a:hover,
 a:focus {
-  color: var(--color-alpha-light);
+  font-weight: 600;
 }
 
 /*------------------------------------*\
@@ -251,226 +170,21 @@ a:focus {
 
 /* size modifiers */
 
-.o-row--lg {
-  padding-top: 3rem;
-  padding-bottom: 24px;
-}
-
-.o-row--xl {
-  padding-top: 72px;
-  padding-bottom: 3rem;
-}
-
-@media (min-width: 768px) {
-  .o-row {
-    --screen-padding: 3rem;
-    /* padding-left: 3rem;
-        padding-right: 3rem; */
-  }
-}
-
-@media (min-width: 992px) {
-  .o-row--xl {
-    padding-top: 96px;
-    padding-bottom: 72px;
-  }
-}
-
 /*
     Objects: Container
     ---
     Creates a horizontal container that sets de global max-width
 */
 
-.o-container {
+/* .o-container {
   width: 100%;
-}
+} */
 
 /*
     Objects: section
     ---
     Creates vertical whitespace between adjacent sections inside a row
 */
-
-.o-section {
-  position: relative;
-}
-
-.o-section + .o-section {
-  padding-top: 24px;
-}
-
-@media (min-width: 768px) {
-  .o-section--lg + .o-section--lg,
-  .o-section--xl + .o-section--xl {
-    padding-top: 3rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .o-section--xl + .o-section--xl {
-    padding-top: 72px;
-  }
-}
-
-/*
-    Objects: Layout
-    ---
-    The layout object provides us with a column-style layout system. This object
-    contains the basic structural elements, but classes should be complemented
-    with width utilities
-*/
-
-.o-layout {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.o-layout__item {
-  width: 100%;
-}
-
-/* gutter modifiers, these affect o-layout__item too */
-
-.o-layout--gutter {
-  margin: 0 -12px;
-}
-
-.o-layout--gutter > .o-layout__item {
-  padding: 0 12px;
-}
-
-.o-layout--gutter-sm {
-  margin: 0 -6px;
-}
-
-.o-layout--gutter-sm > .o-layout__item {
-  padding: 0 6px;
-}
-
-.o-layout--gutter-lg {
-  margin: 0 -24px;
-}
-
-.o-layout--gutter-lg > .o-layout__item {
-  padding: 0 24px;
-}
-
-.o-layout--gutter-xl {
-  margin: 0 -3rem;
-}
-
-.o-layout--gutter-xl > .o-layout__item {
-  padding: 0 3rem;
-}
-
-/* reverse horizontal row modifier */
-
-.o-layout--row-reverse {
-  flex-direction: row-reverse;
-}
-
-/* Horizontal alignment modifiers*/
-
-.o-layout--justify-start {
-  justify-content: flex-start;
-}
-
-.o-layout--justify-end {
-  justify-content: flex-end;
-}
-
-.o-layout--justify-center {
-  justify-content: center;
-}
-
-.o-layout--justify-space-around {
-  justify-content: space-around;
-}
-
-.o-layout--justify-space-evenly {
-  justify-content: space-evenly;
-}
-
-.o-layout--justify-space-between {
-  justify-content: space-between;
-}
-
-/* Vertical alignment modifiers */
-
-.o-layout--align-start {
-  align-items: flex-start;
-}
-
-.o-layout--align-end {
-  align-items: flex-end;
-}
-
-.o-layout--align-center {
-  align-items: center;
-}
-
-.o-layout--align-baseline {
-  align-items: baseline;
-}
-
-/* Vertical alignment modifiers that only work if there is one than one flex item */
-
-.o-layout--align-content-start {
-  align-content: start;
-}
-
-.o-layout--align-content-end {
-  align-content: end;
-}
-
-.o-layout--align-content-center {
-  align-content: center;
-}
-
-.o-layout--align-content-space-around {
-  align-content: space-around;
-}
-
-.o-layout--align-content-space-between {
-  align-content: space-between;
-}
-
-/*
-    Objects: List
-    ---
-    Small reusable object to remove default list styling from lists
-*/
-
-.o-list {
-  list-style: none;
-  padding: 0;
-}
-
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
-
-/*
-    Object: Hide accessible
-    ---
-    Accessibly hide any element
-*/
-
-.o-hide-accessible {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
 
 /*------------------------------------*\
 #COMPONENTS
@@ -507,6 +221,7 @@ a:focus {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
+
 /*
     Component: Logo
     ---
@@ -514,7 +229,7 @@ a:focus {
 */
 
 .c-logo {
-  height: 24px;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -574,7 +289,7 @@ a:focus {
   width: 100%;
   height: 5rem;
   background-color: var(--color-neutral-xxxx-dark);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.7);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 4rem 1rem;
   position: sticky;
@@ -644,15 +359,29 @@ a:focus {
 .c-card {
   color: white;
   display: block;
-  /* margin-bottom: 24px; */
   margin: 0.5rem;
+  border: none;
   border-radius: var(--radius);
   background-color: var(--card-background);
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 0.25rem rgba(0, 0, 0, 0.75);
   min-height: 16rem;
   min-width: 16rem;
   padding: 1rem;
   animation: slideInCards 0.6s 1;
+}
+
+.c-card:hover {
+  font-weight: normal;
+}
+
+.c-card:visited {
+  color: white;
+  font-weight: normal;
+}
+.c-card:focus {
+  color: white;
+  font-weight: normal;
+  outline: var(--color-neutral-xxx-light) solid 0.125rem;
 }
 
 @keyframes slideInCards {
@@ -678,19 +407,6 @@ a:focus {
   justify-content: space-around;
 }
 
-/* .c-card-flipped {
-  transform: rotateY(180deg);
-  --card-front-display: var(--card-side-hidden);
-  --card-back-display: var(--card-side-display);
-  transition: transform 0.7s;
-
-}
-.c-card-unflipped {
-  transform: rotateY(0deg);
-  --card-front-display: var(--card-side-display);
-  --card-back-display: var(--card-side-hidden);
-  transition: transform 0.7s;
-} */
 .c-card__body {
   font-size: 1rem;
   margin-bottom: 3rem;
@@ -701,16 +417,10 @@ a:focus {
   transform: rotateY(180deg);
 } */
 
-.c-card__footer {
-  text-align: center;
-  border-top: 1px solid var(--color-neutral-xxx-light);
-  background-color: var(--color-neutral-xxxx-light);
-}
-
 .c-card-tophalf {
   display: grid;
   margin-bottom: 0rem;
-  grid-template-rows: 16px 48px 16px;
+  grid-template-rows: 1rem 4rem 1rem;
 }
 
 .c-card-info {
@@ -722,10 +432,10 @@ a:focus {
 
 .c-card__title {
   text-align: center;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.15rem;
+  line-height: 1.5rem;
   font-weight: 600;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -749,16 +459,12 @@ a:focus {
 
 @media (min-width: 27rem) {
   .c-card__title {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 }
 
 .c-info-element {
   line-height: 1.5rem;
-}
-
-.c-card-tophalf .c-info-element {
-  font-size: 1rem;
 }
 
 .c-top-info {
@@ -770,7 +476,7 @@ a:focus {
 }
 
 .c-validity {
-  font-size: 0.75rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   grid-column-start: 1;
@@ -784,7 +490,7 @@ a:focus {
   background-color: red;
   margin: 0 auto;
   animation: colorChange 10s 1; /* 10 seconds is just as test, mainly as fetaure to show how long last refresh was, prob will always be recent */
-  margin-left: 8px;
+  margin-left: 0.5rem;
 }
 
 @keyframes colorChange {
@@ -804,7 +510,7 @@ a:focus {
     --indicator-size: 0.75rem;
   }
   .c-validity {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -828,41 +534,12 @@ a:focus {
     Class to put on all input="text" like form inputs
 */
 
-.c-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 100%;
-  border: 1px solid var(--color-neutral-xxx-light);
-  border-radius: var(--radius);
-  background-color: #fff;
-  color: var(--color-neutral-xxxx-dark);
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 24px;
-  padding: 11px 1rem;
-  outline: none;
-  box-shadow: var(--inset-shadow);
-  transition: border var(--transition-alpha);
-}
-
 /*
     Component: Label
     ---
     Class to put on all form labels
 */
-
-.c-label {
-  margin-bottom: 0;
-  padding-bottom: 8px;
-  font-size: 14px;
-  line-height: 1rem;
-  color: var(--color-neutral-x-dark);
-}
-
-.c-label--option {
-  padding-bottom: 0;
-}
+/*  */
 
 .c-credits {
   color: white;
@@ -871,18 +548,11 @@ a:focus {
   font-size: 1rem;
   padding: 1rem;
   margin-top: 2rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 .7rem 0 rgba(0, 0, 0, 0.7);
   position: absolute;
   inset: auto 0 0 0;
 }
 
-.c-option-list {
-  margin-bottom: 24px;
-}
-
-.c-option-list__item {
-  margin-bottom: 12px;
-}
 
 /*
     Custom option
@@ -919,670 +589,4 @@ a:focus {
     rgba(0, 0, 0, 0) 0.6rem,
     #454555 0.6rem
   );
-}
-
-/* Hide the actual input with the class .o-hide-accessible */
-
-/* the label is a separate component */
-.c-custom-input-option-label {
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -ms-align-items: center;
-  align-items: center;
-}
-
-.c-custom-input-option {
-  display: flex;
-  -ms-align-items: center;
-  align-items: center;
-  justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  margin-right: 8px;
-  border: 1px solid var(--color-neutral-xxx-light);
-  box-shadow: var(--inset-shadow);
-  transition: border var(--transition-alpha);
-}
-
-.c-custom-input-option--checkbox {
-  border-radius: var(--radius);
-}
-
-.c-custom-input-option--radio {
-  border-radius: 100%;
-}
-
-.c-custom-input-option__symbol {
-  display: block;
-  opacity: 0; /* Hide the svg initially */
-  transform: scale(0.5);
-  transition: all var(--transition-alpha);
-}
-
-.c-custom-input-option--checkbox .c-custom-input-option__symbol {
-  width: 10px;
-  height: 10px;
-  fill: var(--color-alpha);
-}
-
-.c-custom-input-option--radio .c-custom-input-option__symbol {
-  background-color: var(--color-alpha);
-  border-radius: 100%;
-  width: 6px;
-  height: 6px;
-}
-
-/* hover state */
-
-/* focused and active state */
-
-.c-custom-input-option-hidden:focus
-  + .c-custom-input-option-label
-  .c-custom-input-option,
-.c-custom-input-option-hidden:active
-  + .c-custom-input-option-label
-  .c-custom-input-option {
-  border: 1px solid var(--color-alpha-x-light);
-  box-shadow: var(--focus-shadow);
-}
-
-/* checked state */
-
-.c-custom-input-option-hidden:checked
-  + .c-custom-input-option-label
-  .c-custom-input-option__symbol {
-  opacity: 1; /* Show the svg when the invisible checkbox is checked */
-  transform: scale(1);
-}
-
-/*
-    Component: Custom Toggle
-    ---
-    Visually change a checkbox into a toggle
-*/
-
-.c-toggle-list {
-  margin-bottom: 24px;
-}
-
-.c-toggle-list__item {
-  margin-bottom: 12px;
-}
-
-.c-toggle-list__item + .c-toggle-list__item {
-  padding-top: 12px;
-  border-top: 1px solid var(--color-neutral-xxx-light);
-}
-
-.c-toggle__label {
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -ms-align-items: center;
-  align-items: center;
-}
-
-.c-toggle__label--inverted {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-}
-
-.c-toggle__input {
-  display: block;
-  height: 24px;
-  width: 3rem;
-  margin-right: 1rem;
-  background-color: var(--color-neutral-xxxx-light);
-  border-radius: 32px;
-  border: 1px solid var(--color-neutral-xxx-light);
-  transition: all var(--transition-alpha);
-}
-
-.c-toggle__label--inverted .c-toggle__input {
-  margin-right: 0;
-}
-
-.c-toggle__input::after {
-  display: block;
-  content: "";
-  height: 22px;
-  width: 22px;
-  border-radius: 100%;
-  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  transition: all var(--transition-alpha);
-}
-
-/* focused and active state */
-
-.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input,
-.c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input {
-  border-color: var(--color-alpha-x-light);
-  box-shadow: var(--focus-shadow);
-}
-
-/* checked state */
-
-.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input::after {
-  transform: translate(24px, 0);
-}
-
-.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input {
-  background-color: var(--color-alpha);
-  border-color: var(--color-alpha-dark);
-}
-
-/* alternative design */
-
-.c-toggle__input--alternative {
-  height: 20px;
-  width: 40px;
-  background-color: var(--color-neutral-xxx-light);
-  border-color: white;
-}
-
-.c-toggle__input--alternative::after {
-  transform: translate(-2px, -2px);
-  border: 1px solid white;
-  transition-timing-function: cubic-bezier(
-    0.175,
-    0.885,
-    0.32,
-    1.275
-  ); /* easOutBack to make it wobble even more */
-  transition-duration: 0.2s;
-}
-
-/* focused and active state */
-
-.c-toggle__checkbox-hidden:focus
-  + .c-toggle__label
-  .c-toggle__input--alternative,
-.c-toggle__checkbox-hidden:active
-  + .c-toggle__label
-  .c-toggle__input--alternative {
-  border-color: white;
-  box-shadow: none;
-}
-
-.c-toggle__checkbox-hidden:focus
-  + .c-toggle__label
-  .c-toggle__input--alternative::after,
-.c-toggle__checkbox-hidden:active
-  + .c-toggle__label
-  .c-toggle__input--alternative::after {
-  border-color: var(--color-alpha-x-light);
-  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.2),
-    0 0 0 3px var(--focus-shadow-color);
-}
-
-/* Make it wobble */
-
-.c-toggle__checkbox-hidden:active
-  + .c-toggle__label
-  .c-toggle__input--alternative::after {
-  transform: translate(-2px, -2px) scaleY(0.9);
-}
-
-/* checked state */
-
-.c-toggle__checkbox-hidden:checked
-  + .c-toggle__label
-  .c-toggle__input--alternative::after {
-  transform: translate(18px, -2px);
-  background-color: var(--color-alpha);
-  border-color: var(--color-alpha);
-}
-
-.c-toggle__checkbox-hidden:focus:checked
-  + .c-toggle__label
-  .c-toggle__input--alternative::after,
-.c-toggle__checkbox-hidden:active:checked
-  + .c-toggle__label
-  .c-toggle__input--alternative::after {
-  border-color: var(--color-alpha-dark);
-}
-
-.c-toggle__checkbox-hidden:checked
-  + .c-toggle__label
-  .c-toggle__input--alternative {
-  background-color: var(--color-alpha-xx-light);
-  border-color: white;
-}
-
-/* Make it wobble */
-
-.c-toggle__checkbox-hidden:active:checked
-  + .c-toggle__label
-  .c-toggle__input--alternative::after {
-  transform: translate(18px, -2px) scaleY(0.9);
-}
-
-/*
-    Component: Custom Select
-    ---
-    Custom select dropdown
-*/
-
-.c-custom-select {
-  display: block;
-  position: relative;
-}
-
-.c-custom-select__symbol {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  pointer-events: none;
-  fill: var(--color-neutral-x-light);
-}
-
-/*
-    Component: Password Toggle
-    ---
-    Password toggle custom checkbox
-*/
-
-/*------------------------------------*\
-#UTILITIES
-\*------------------------------------*/
-
-/*
-    Utilities: color
-    ---
-    Utility classes to put specific colors onto elements
-*/
-
-.u-color-neutral {
-  color: var(--color-neutral);
-}
-
-.u-color-neutral-dark {
-  color: var(--color-neutral-dark);
-}
-
-/*
-    Utilities: spacing
-    ---
-    Utility classes to put specific margins and paddings onto elements
-*/
-
-.u-pt-clear {
-  padding-top: 0 !important;
-}
-
-.u-mb-clear {
-  margin-bottom: 0 !important;
-}
-
-.u-mb-xs {
-  margin-bottom: 4px !important;
-}
-
-.u-mb-sm {
-  margin-bottom: 8px !important;
-}
-
-.u-mb-md {
-  margin-bottom: 1rem !important;
-}
-
-.u-mb-lg {
-  margin-bottom: 32px !important;
-}
-
-.u-mb-xl {
-  margin-bottom: 3rem !important;
-}
-
-/*
-    Utilities: max-width
-    ---
-    Utility classes to put specific max widths onto elements
-*/
-
-.u-max-width-xs {
-  max-width: 27rem !important;
-}
-
-.u-max-width-sm {
-  max-width: 39rem !important;
-}
-
-.u-max-width-md {
-  max-width: 50rem !important;
-}
-
-.u-max-width-lg {
-  max-width: 63.5rem !important;
-}
-
-.u-max-width-none {
-  max-width: none !important;
-}
-
-/*
-    Utilities: align
-    ---
-    Utility classes align text or components
-*/
-
-.u-align-text-center {
-  text-align: center;
-}
-
-.u-align-center {
-  margin: 0 auto;
-}
-
-/*
-    Utilities: text
-    Utility classes to create smaller or bigger test
-*/
-
-.u-text-sm {
-  font-size: 14px;
-}
-
-/*
-    Utility: Widths
-    ---
-    Utility classes to put specific widths onto elements
-    Will be mostly used on o-layout__item
-*/
-
-.u-width-auto {
-  width: auto !important;
-}
-
-.u-1-of-2 {
-  width: 50% !important;
-}
-
-.u-1-of-3 {
-  width: 33.3333333333% !important;
-}
-
-.u-2-of-3 {
-  width: 66.6666666667% !important;
-}
-
-.u-1-of-4 {
-  width: 25% !important;
-}
-
-.u-3-of-4 {
-  width: 75% !important;
-}
-
-.u-1-of-5 {
-  width: 20% !important;
-}
-
-.u-2-of-5 {
-  width: 40% !important;
-}
-
-.u-3-of-5 {
-  width: 60% !important;
-}
-
-.u-4-of-5 {
-  width: 80% !important;
-}
-
-.u-1-of-6 {
-  width: 16.6666666667% !important;
-}
-
-.u-5-of-6 {
-  width: 83.3333333333% !important;
-}
-
-@media (min-width: 576px) {
-  .u-1-of-2-bp1 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp1 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp1 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp1 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp1 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp1 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp1 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp1 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp1 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp1 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp1 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .u-1-of-2-bp2 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp2 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp2 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp2 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp2 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp2 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp2 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp2 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp2 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp2 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp2 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .u-1-of-2-bp3 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp3 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp3 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp3 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp3 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp3 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp3 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp3 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp3 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp3 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp3 {
-    width: 83.3333333333% !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .u-1-of-2-bp4 {
-    width: 50% !important;
-  }
-  .u-1-of-3-bp4 {
-    width: 33.3333333333% !important;
-  }
-  .u-2-of-3-bp4 {
-    width: 66.6666666667% !important;
-  }
-  .u-1-of-4-bp4 {
-    width: 25% !important;
-  }
-  .u-3-of-4-bp4 {
-    width: 75% !important;
-  }
-  .u-1-of-5-bp4 {
-    width: 20% !important;
-  }
-  .u-2-of-5-bp4 {
-    width: 40% !important;
-  }
-  .u-3-of-5-bp4 {
-    width: 60% !important;
-  }
-  .u-4-of-5-bp4 {
-    width: 80% !important;
-  }
-  .u-1-of-6-bp4 {
-    width: 16.6666666667% !important;
-  }
-  .u-5-of-6-bp4 {
-    width: 83.3333333333% !important;
-  }
-}
-
-/*------------------------------------*\
-#MEDIA
-\*------------------------------------*/
-
-/*
-    Media Queries
-    ---
-    EXAMPLE Media Queries for Responsive Design.
-    These examples override the primary ('mobile first') styles.
-    USE THEM INLINE!
-*/
-
-/* Extra small devices (portrait phones, less than 576px)
-No media query since this is the default in mobile first design
-*/
-
-/* Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {}
-*/
-
-/* Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
-*/
-
-/* Large devices (landscape tablets, desktops, 992px and up)
-@media (min-width: 992px) {}
-*/
-
-/* Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
-*/
-
-/*
-    Print styles.
-    ---
-    Inlined to avoid the additional HTTP request:
-    http://www.phpied.com/delay-loading-your-print-css/
-*/
-
-@media print {
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster:
-        http://www.sanbeiji.com/archives/953 */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-  /*
-    * Don't show links that are fragment identifiers,
-    * or use the `javascript:` pseudo protocol
-    */
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
-  }
-  pre {
-    white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  /*
-    * Printing Tables:
-    * http://css-discuss.incutio.com/wiki/Printing_Tables
-    */
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
 }
